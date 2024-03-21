@@ -1,33 +1,11 @@
-import React, { useEffect } from "react";
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import React from "react";
 import TaskInput from "./TaskInput";
-const AddTask = () => {
-  const CreateTask = () => {
-    const taskArray = [];
-    useEffect(() => {
-      const createTask = (taskTitle, taskDetail) => {
-        const taskObject = { title: taskTitle, detail: taskDetail };
-        taskArray.push(taskObject);
-        console.log(taskArray);
-      };
-
-      const handleClick = () => {
-        let taskTitle = document.getElementById("addTask").value;
-        let taskDetail = document.getElementById("addTaskDetail").value;
-        createTask(taskTitle, taskDetail);
-      };
-
-      let submitBtn = document.getElementById("addTaskButton");
-      submitBtn.addEventListener("click", handleClick);
-
-      return () => {
-        submitBtn.removeEventListener("click", handleClick);
-      };
-    }, []);
-  };
-  CreateTask();
+import PropTypes from "prop-types";
+const AddTask = (props) => {
   return (
     <>
-      
       <div className="add-task-form">
         <TaskInput
           header="Add Task"
@@ -42,9 +20,15 @@ const AddTask = () => {
           submitBtnValue="Add"
           submitBtnClass="add-task-button"
           submitBtnId="addTaskButton"
+          handleAddTask={props.handleAddTask}
         />
       </div>
     </>
   );
 };
+
+AddTask.propTypes = {
+  handleAddTask: PropTypes.func.isRequired,
+};
+
 export default AddTask;

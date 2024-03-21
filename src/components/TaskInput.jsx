@@ -1,12 +1,14 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
 
 const TaskInput = (props) => {
   return (
     <div className="todo-form">
-        <div className="header">
-          <h2 className="header">{props.header}</h2>
-        </div>
+      <div className="header">
+        <h2 className="header">{props.header}</h2>
+      </div>
+      {/* <form action="" method="post"> */}
         <div className="input-container">
           <div className="task-title">
             <input
@@ -15,6 +17,8 @@ const TaskInput = (props) => {
               id={props.taskNameid}
               className={props.taskNameClass}
               placeholder={props.titlePlaceholder}
+              value={props.taskTitle}
+              required
             />
           </div>
           <div className="task-detail">
@@ -24,6 +28,8 @@ const TaskInput = (props) => {
               id={props.taskDetailid}
               className={props.taskDetailClass}
               placeholder={props.detailPlaceholder}
+              value={props.taskDetail}
+              required
             />
           </div>
         </div>
@@ -33,8 +39,10 @@ const TaskInput = (props) => {
             value={props.submitBtnValue}
             className={props.submitBtnClass}
             id={props.submitBtnId}
+            onClick={props.handleAddTask}
           />
         </div>
+      {/* </form> */}
     </div>
   );
 };
@@ -52,6 +60,7 @@ TaskInput.propTypes = {
   submitBtnValue: PropTypes.string.isRequired,
   submitBtnClass: PropTypes.string.isRequired,
   submitBtnId: PropTypes.string.isRequired,
+  handleAddTask: PropTypes.func.isRequired,
 };
 
 export default TaskInput;

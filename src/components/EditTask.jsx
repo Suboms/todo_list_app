@@ -18,6 +18,7 @@ const EditTaskInput = () => {
         submitBtnValue="Upadate"
         submitBtnClass="edit-task-button"
         submitBtnId="editTaskButton"
+        
       />
     </div>
   );
