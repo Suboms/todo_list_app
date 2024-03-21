@@ -1,11 +1,14 @@
 import React from "react";
 import "./App.css";
-import CreateTask from "./components/CreateTask";
+import IndexPage from "./components/Index";
+// import CreateTask from "./components/CreateTask";
+import AddTask from "./components/AddTask";
 
 function App() {
   return (
     <>
-     <CreateTask/>
+      <IndexPage />
+     
     </>
   );
 }
