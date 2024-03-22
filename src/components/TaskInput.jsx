@@ -8,7 +8,7 @@ const TaskInput = (props) => {
       <div className="header">
         <h2 className="header">{props.header}</h2>
       </div>
-      {/* <form action="" method="post"> */}
+      {/* <form> */}
         <div className="input-container">
           <div className="task-title">
             <input

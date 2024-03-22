@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const AddTask = (props) => {
   return (
     <>
-      <div className="add-task-form">
+      <div className="add-task-form" style={{display:"none"}}>
         <TaskInput
           header="Add Task"
           taskName="task-title"
