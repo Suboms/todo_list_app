@@ -1,6 +1,6 @@
 import React from "react";
 import propTypes from "prop-types";
-const IndexPage = ({ taskArray, deleteHandler }) => {
+const IndexPage = ({ taskArray, deleteHandler, editHandler }) => {
   return (
     <>
       <div className="container">
@@ -19,7 +19,7 @@ const IndexPage = ({ taskArray, deleteHandler }) => {
                   </div>
                   <div className="task-action">
                     <div className="edit-container">
-                    <button className="edit-task">Edit</button>
+                    <button className="edit-task" onClick={editHandler}>Edit</button>
                     </div>
                     <div className="delete-container">
                     <button className="delete-task" onClick={deleteHandler}>
@@ -44,5 +44,6 @@ const IndexPage = ({ taskArray, deleteHandler }) => {
 IndexPage.propTypes = {
   taskArray: propTypes.array.isRequired,
   deleteHandler: propTypes.func.isRequired,
+  editHandler: propTypes.func.isRequired,
 };
 export default IndexPage;

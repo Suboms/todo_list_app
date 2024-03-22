@@ -4,6 +4,7 @@ import "./App.css";
 import IndexPage from "./components/Index";
 // import CreateTask from "./components/CreateTask";
 import AddTask from "./components/AddTask";
+import EditTask from "./components/EditTask";
 
 function App() {
   const [taskArray, setTaskArray] = useState([]);
@@ -26,6 +27,7 @@ function App() {
       const container = document.querySelector(".container");
       const createTaskBtn = document.querySelector(".create-task-btn");
       const addTaskBtn = document.querySelector(".add-task-button");
+
       let taskTitle = document.getElementById("addTask");
       let taskDetail = document.getElementById("addTaskDetail");
       createTaskBtn.addEventListener("click", () => {
@@ -54,10 +56,42 @@ function App() {
       setTaskArray([...taskArray]);
     });
   };
+
+  const showEdit = () => {
+    const container = document.querySelector(".container");
+    const editTaskForm = document.querySelector(".edit-task-form");
+    const editTaskBtn = document.querySelectorAll(".edit-task");
+    editTaskBtn.forEach((task, index) => {
+      container.style.display = "none";
+      editTaskForm.style.display = "block";
+    });
+  };
+
+  const handleEdit = () => {
+    const editTask = document.getElementById("editTask");
+    const editTaskDetail = document.getElementById("editTaskDetail");
+    const editTaskButton = document.getElementById("editTaskButton");
+    const editTaskForm = document.querySelector(".edit-task-form");
+    const container = document.querySelector(".container");
+    editTaskButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (editTask.validity.valid && editTaskDetail.validity.valid) {
+        createTask(editTask.value, editTaskDetail.value);
+        editTaskForm.style.display = "none";
+        container.style.display = "block";
+      }
+    });
+  };
+
   return (
     <>
-      <IndexPage taskArray={taskArray} deleteHandler={handleDelete}/>
+      <IndexPage
+        taskArray={taskArray}
+        deleteHandler={handleDelete}
+        editHandler={showEdit}
+      />
       <AddTask handleAddTask={handleAddTask} />
+      <EditTask handleEditTask={handleEdit} />
     </>
   );
 }

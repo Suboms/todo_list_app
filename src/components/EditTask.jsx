@@ -1,15 +1,16 @@
 import React from "react";
 import TaskInput from "./TaskInput";
+import PropTypes from "prop-types";
 
 
-const EditTaskInput = () => {
+const EditTask = (props) => {
   return (
-    <div className="edit-task-form">
+    <div className="edit-task-form" style={{display:"none"}}>
       <TaskInput
         header="Edit Task"
         taskName="task-title"
         taskNameid="editTask"
-        taskNameClass="edit-task"
+        taskNameClass="edit-Task"
         taskDetailName="task-detail"
         taskDetailClass="edit-task-detail"
         taskDetailid="editTaskDetail"
@@ -18,9 +19,14 @@ const EditTaskInput = () => {
         submitBtnValue="Upadate"
         submitBtnClass="edit-task-button"
         submitBtnId="editTaskButton"
-        
+        handleAddTask={props.handleEditTask}
       />
     </div>
   );
 };
-export default EditTaskInput;
+
+
+EditTask.propTypes = {
+  handleEditTask: PropTypes.func.isRequired,
+};
+export default EditTask;
